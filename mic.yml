@@ -22,3 +22,8 @@
     #python dictionary
       ansible.builtin.debug:
         msg: System {{ inventory_hostname }}
+    - name: msg1 and environment varaible 
+      debug:
+        msg:
+        - "testing debug module"
+        - System {{ inventory_hostname }}
