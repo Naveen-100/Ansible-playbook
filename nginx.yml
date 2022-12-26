@@ -17,10 +17,19 @@
       copy:
         content: "{{motd_ubuntu}}"
         dest: /etc/motd
+      notify: MOTD change in Ubuntu
       when: ansible_distribution == "Ubuntu"
     - name: configure message of the day for Redhat system 
       copy:
         content: "{{motd_redhat}}"
         dest: /etc/motd
+      notify: MOTD change in Redhat
       when: ansible_distribution == "RedHat"
         ###to call a varaible in python Jinja2
+  handlers:
+    - name: MOTD Change in Ubuntu
+        debug: 
+          msg: changes in ubuntu
+    - name: MOTD Change in Redhat
+        debug: 
+          msg: changes in redhat
