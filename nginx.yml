@@ -18,7 +18,7 @@
         content: "{{motd_ubuntu}}"
         dest: /etc/motd
       when: ansible_distribution == "Ubuntu"
-     - name: configure message of the day for Redhat system 
+    - name: configure message of the day for Redhat system 
       copy:
         content: "{{motd_redhat}}"
         dest: /etc/motd
