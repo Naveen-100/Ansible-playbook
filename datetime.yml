@@ -2,7 +2,7 @@
 ##3any playbook start with three dash
 - 
 ##the minues sign indicate a list of items
-  hosts: ansible-client
+  hosts: all
   #gather_facts: false
   #3it is the target where my playbook will run
   #varaibles
@@ -14,11 +14,11 @@
   ##we need to define tasks
   #to define task it start with task block and below the name of the task
   tasks:
-    - name: all featured
+    - name: configure message of the day for ubuntu system 
     #python dictionary
-      debug:
-        var: 'ansible_facts.eth1.features'
-    - name: filter value 
-      debug:
-        msg: "{{(ansible_facts.eth1.features | dict2items | selectattr ('value','match','on'))}}"
-        #eth0 means Redhat
+      ansible.builtin.debug:
+        var: ansible_date_time
+    - name: configure message of the day for ubuntu system 
+    #python dictionary
+      ansible.builtin.debug:
+        var: ansible_date_time.iso8601
