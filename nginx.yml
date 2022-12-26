@@ -9,6 +9,7 @@
   vars:
     #variable need to define in key value format
     motd_ubuntu: "Welcome to Ubuntu Linux \n"
+    motd_redhat: "Welcome to Redhat \n"
   ##we need to define tasks
   #to define task it start with task block and below the name of the task
   tasks:
@@ -16,5 +17,10 @@
       copy:
         content: "{{motd_ubuntu}}"
         dest: /etc/motd
-
+      when: ansible_distribution == "Ubuntu"
+     - name: configure message of the day for Redhat system 
+      copy:
+        content: "{{motd_redhat}}"
+        dest: /etc/motd
+      when: ansible_distribution == "RedHat"
         ###to call a varaible in python Jinja2
