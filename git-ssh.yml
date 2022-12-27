@@ -5,7 +5,7 @@
   hosts: ansible-master
   
   vars:
-    repo: git@github.com:Naveen-100/springchat.git
+    repo: git@github.com:Naveen-100/spring-chat.git
     dest: /root/springchat
     sshkey: "~/.ssh/id_rsa"
 
