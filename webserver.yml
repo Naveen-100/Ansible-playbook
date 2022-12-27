@@ -12,14 +12,14 @@
         state: present
         key: https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-8
       when: ansible_distribution == "RedHat"
-      tags: rpmkey 
+      tags: rpmkey
     - name: download the rpm file to update 
       yum:
         name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
         update_cache: yes 
         state: latest
       when: ansible_distribution == "RedHat"  
-      tags: rpm 
+      tags: rpm
     - name: update the ubuntu system 
       apt: 
         update_cache: yes 
@@ -28,14 +28,14 @@
       package:
         name: nginx 
         state: latest 
-      tags: package 
+      tags: package
     - name: patch my redhat system 
       yum: 
         name: patch 
         update_cache: yes
-        state: latest
-      tags: patch 
+        state: latest 
       when: ansible_distribution == "RedHat"
+      tags: patch 
     - name: create a directory called as site available 
       file:
         path: /etc/nginx/sites-available
@@ -76,5 +76,5 @@
   handlers:
     - name: Check HTTP Service 
       uri:
-        url: http://{{ansible_default_ipv4.address}}
-        status_code: 200
+        url: http://{{ansible_default_ipv4.address}}  #get it will from setup module (ansible all -m setup)
+        status_code: 200 # call a variable we use {{}}
