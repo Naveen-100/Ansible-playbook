@@ -56,9 +56,21 @@
     - name: template for test page 
       template:
         src: templates/index.html.j2
-        dest: /usr/share/nginx/html
+        dest: /usr/share/nginx/index.html
         mode: 0644
+    - name: add port 80 for redhat system
+      ansible.posix.firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+      when: ansible_distribution == "RedHat"
     - name: restart nginx 
       service:
         name: nginx 
         state: restarted
+      notify: Check HTTP Service 
+  handlers:
+    - name: Check HTTP Service 
+      uri:
+        url: http://{{ansible_default_ipv4.address}}
+        status_code: 200
