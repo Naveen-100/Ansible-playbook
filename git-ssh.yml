@@ -2,10 +2,10 @@
 
 - 
 
-  hosts: ansiblemaster
+  hosts: ansible-master
   
   vars:
-    repo: git@github.com:gopal1409/sapient-chatapp.git
+    repo: git@github.com/Naveen-100/springchat.git
     dest: /root/springchat
     sshkey: "~/.ssh/id_rsa"
 
